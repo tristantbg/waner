@@ -27,4 +27,5 @@ fields:
   ogimage:
     label: Facebook OpenGraph image
     type: image
+    help: 1200x630px minimum
     width: 1/2
