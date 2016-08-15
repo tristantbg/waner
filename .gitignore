@@ -1,7 +1,7 @@
 .DS_Store
 Thumbs.db
 /content/*
-/assets/lib
+/lib
 /assets/css/app.min.css
 /assets/js/build/*
 /assets/js/app.concat.js
@@ -9,5 +9,6 @@ Thumbs.db
 /node_modules
 /npm-debug.log
 /site/accounts
+/site/cache
 /assets/avatars
 /thumbs/*
