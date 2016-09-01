@@ -2,7 +2,6 @@
 var width = $(window).width(),
     height = $(window).height(),
     $root = '/';
-$sitetitle = 'Root';
 $(function() {
     var app = {
         init: function() {
