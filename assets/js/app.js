@@ -5,9 +5,6 @@ var width = $(window).width(),
 $(function() {
     var app = {
         init: function() {
-            $(window).load(function() {
-                $(".loader").fadeOut("fast");
-            });
             $(window).resize(function(event) {});
             $(document).ready(function($) {
                 $body = $('body');
@@ -32,7 +29,20 @@ $(function() {
                 $(document).keyup(function(e) {
                     if (e.keyCode === 39 && $slider) app.goNext($slider);
                 });
+                $(window).load(function() {
+                    $(".loader").fadeOut("fast");
+                });
             });
+        },
+        sizeSet: function() {
+            width = $(window).width();
+            height = $(window).height();
+            if (width <= 770 || Modernizr.touch) isMobile = true;
+            if (isMobile) {
+                if (width >= 770) {
+                    //location.reload();
+                }
+            }
         },
         goIndex: function() {
             History.pushState({
