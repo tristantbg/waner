@@ -20,6 +20,10 @@
 			<meta name="description" content="<?= $page->text()->excerpt(250) ?>">
 			<meta name="DC.Description" content="<?= $page->text()->excerpt(250) ?>"/ >
 			<meta property="og:description" content="<?= $page->text()->excerpt(250) ?>" />
+		<?php else: ?>
+			<meta name="description" content="">
+			<meta name="DC.Description" content=""/ >
+			<meta property="og:description" content="" />
 		<?php endif ?>
 	<?php endif ?>
 	<meta name="robots" content="index,follow" />
