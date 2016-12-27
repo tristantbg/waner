@@ -106,7 +106,7 @@ function resizeOnDemand($image, $width = 500) {
     // hash
     $modified = substr(md5($image->modified()),0,12);
 
-    return $url . $image->name() .'-'. $width .'-'. $modified .'.'. $image->extension();
+    return $url . f::safeName($image->name()) .'-'. $width .'-'. $modified .'.'. $image->extension();
   }
   else {
     return $image->url();

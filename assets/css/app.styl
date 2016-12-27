@@ -3,7 +3,7 @@
 @import '_mixins.styl'
 
 // Media queries
-$xl = 1439px
+$xl = 1600px
 $lg = 1260px
 $md = 1023px
 $sm = 767px
@@ -23,9 +23,8 @@ webfont('Franklin Gothic', 'franklingothic', true, 'bold')
 
 body,html
 	width 100%
-	height 100%
-	background-color $primary
 	-webkit-text-size-adjust 100%
+	background $primary
 
 html
 	font-size 62.5%
@@ -37,6 +36,10 @@ body
 
 p
 	margin-bottom 1em
+	line-height 100%
+
+p:last-child
+	margin-bottom 0
 
 ::selection
 	background $secondary
