@@ -10,16 +10,21 @@ $sm = 767px
 
 // Colors
 $primary ?= #fff
-$secondary ?= #000
+$secondary ?= rgb(40,40,40)
 $accent ?= #ff0000
 
 // Metrics
+$top = 13vh
+$left = 17rem
 $padding = 10px
+$zIndex = 100
 
 // CSS Reset
 global-reset()
 
-webfont('Franklin Gothic', 'franklingothic', true, 'bold')
+webfont('TW_M', 'TW_M', true, 'normal')
+webfont('TW_MI', 'TW_MI', true, 'normal')
+webfont('TW_L', 'TW_L', true, 'normal')
 
 body,html
 	width 100%
@@ -30,13 +35,31 @@ html
 	font-size 62.5%
 
 body
+	display inline-block
 	text-rendering optimizeLegibility
 	font-smoothing()
-	font-size 1rem
+	font-size 1.3rem
+	font-family 'TW_L', 'Helvetica', 'Arial', sans-serif
+	color $secondary
+
+h1, h2, .project-title, section.text-content p
+	font-family 'TW_M'
+	letter-spacing -.07em
+	line-height 110%
+	+below($md)
+		line-height 120%
+
+.project-title, section.text-content p
+	font-size 3.2vw
+	+below($md)
+		font-size 2.3rem
+
+em
+	font-family 'TW_MI'
 
 p
 	margin-bottom 1em
-	line-height 100%
+	line-height 120%
 
 p:last-child
 	margin-bottom 0
@@ -57,11 +80,221 @@ a, a:hover, a:visited, a:focus
 	cursor pointer
 
 .loader
+	transition(height, 1000ms, cubic-bezier(.72,0,.01,1))
+	overflow hidden
 	position fixed
 	width 100%
 	height 100%
 	top 0
 	left 0
-	background $primary url('../../images/loader.gif') center no-repeat
+	background rgb(15,15,15)
 	background-size 15px
-	z-index 10000
+	z-index 300
+
+#intro
+	transition(height, 1000ms, cubic-bezier(.72,0,.01,1))
+	overflow hidden
+	position fixed
+	width 100%
+	height 100%
+	top 0
+	left 0
+	z-index 400
+	padding ($padding*2)
+	cursor pointer
+	+below($md)
+		display none
+	img
+		opacity 0
+		position absolute
+		display block
+		max-width 40%
+		max-height 80%
+
+@keyframes scan {
+  0%, 10% {
+    top: -2px
+  }
+  70%, 100% {
+    top: 120%
+  }
+}
+
+#intro::before
+	content ''
+	height 2px
+	width 100%
+	position absolute
+	top -2px
+	left 0
+	background $primary
+	z-index 100
+	mix-blend-mode difference
+	animation(scan 8s ease infinite)
+	animation-delay(1s)
+
+body.loaded
+	.loader, #intro
+		top initial
+		bottom 0
+		height 0
+
+body.loading
+	overflow hidden
+	.loader
+		top 0
+		bottom initial
+		height 100%
+
+header
+	position fixed
+	top $top
+	left $padding
+	z-index 400
+	color $primary
+	mix-blend-mode difference
+	+below($md)
+		top $padding
+
+#about-link
+	position fixed
+	bottom $padding
+	left $padding
+	z-index $zIndex
+	+below($md)
+		bottom initial
+		left initial
+		top $padding
+		right $padding
+
+#container .inner
+	span(1)
+	position relative
+	padding $top $padding $padding $left
+	+below($md)
+		padding-left $padding
+	section:not(:last-child)
+		margin-bottom 4vw
+		+below($md)
+			margin-bottom 5rem
+	section
+		span(1)
+		.content
+			span(10/12)
+		.date
+			span(2/12)
+			margin-top .8vw
+			text-align right
+	#project-list, section:first-child
+		margin-top -.8vw
+	.project-link
+		span(1)
+	.project-title
+		span(10/12)
+		position relative
+		overflow hidden
+		+below($md)
+			span(11/12)
+			margin-bottom .2em
+		//transition(padding-left, 800ms)
+	.project-title::after
+		+above($md + 1)
+			content ''
+			position absolute
+			height 50vh
+			width 20vw
+			opacity 0.95
+			mix-blend-mode difference
+			background $primary
+			bottom 0
+			left -20vw
+			z-index 200
+	.project-link:hover .project-title::after
+		transition(all, 1000ms, cubic-bezier(.72,0,.01,1))
+		width 0
+		opacity 0.5
+		left 105%
+	.project-date
+		span(2/12)
+		margin-top 1.6vw
+		text-align right
+		+below($md)
+			span(1/12)
+	.project-link:hover
+		.project-title
+			//padding-left .3em
+	#about
+		span(10/12)
+		+below($md)
+			stack()
+	#contact
+		span(2/12)
+		text-align right
+		+below($md)
+			stack()
+	#credits
+		+below($md)
+			span(2/3)
+
+#container .inner.project
+	padding-left 0
+	padding-right 0
+	#project-title
+		position fixed
+		width 20rem
+		text-align right
+		top $top
+		right $padding
+		z-index $zIndex
+		+below($md)
+			width 50%
+			right initial
+			left $padding
+			top ($padding * 3)
+			text-align left
+	#slide-caption
+		width 70%
+		position fixed
+		bottom $padding
+		left $left
+		z-index $zIndex
+		+below($md)
+			width 50%
+			right initial
+			left $padding
+
+#slider
+	height 67vh
+	width 100%
+	+below($md)
+		height 80vh
+	.cell
+		height 100%
+		width 100%
+		padding-left ($left+1)
+		+below($md)
+			padding 0
+			flexbox()
+			justify-content center
+			align-items center
+		.content
+			height 100%
+			overflow hidden
+			backface()
+			+below($md)
+				padding 0 $padding
+			img
+				display block
+				+below($md)
+					width auto
+					height auto
+					max-height 100%
+					max-width 100%
+			img.lazy
+				transition(all, 200ms, ease)
+				filter(blur(5px))
+			img.lazy.flickity-lazyloaded
+				filter(none)
+	.cell.is-selected
+		.content
+			transform(none)

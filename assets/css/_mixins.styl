@@ -10,7 +10,6 @@ webfont(family, file, hack-chrome-windows = false, weight = 'normal')
 		src url(font-url(file + '.eot?#iefix')) format('embedded-opentype'),
 			url(font-url(file + '.woff')) format('woff'), 
 			url(font-url(file + '.woff2')) format('woff2'), 
-			url(font-url(file + '.ttf')) format('truetype'), 
 			url(font-url(file + '.svg#'+ family)) format('svg')
 		font-weight weight
 		font-style normal
@@ -66,6 +65,13 @@ hideselect()
 	-webkit-user-drag none
 	outline 0
 
+backface()
+	transform(translateZ(0))
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+
 dead-center(position)
 	position: position
 	top: 50%
@@ -86,7 +92,7 @@ vendor(prop, args)
 	-o-{prop} args
 	{prop} args
 	
-transition(what = all,time = 300ms,easing = ease)
+transition(what = all,time = 300ms,easing = cubic-bezier(.80,0,.20,1))
 	vendor(transition,what time easing)
 
 filter(args)

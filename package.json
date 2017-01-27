@@ -12,5 +12,8 @@
     "grunt-php": "*",
     "jeet": "*",
     "rupture": "*"
+  },
+  "dependencies": {
+    "flickity": "^2.0.5"
   }
 }

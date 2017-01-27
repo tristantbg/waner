@@ -1,7 +1,17 @@
 <?php snippet('header') ?>
 
-<h1><?php echo $page->title()->html() ?></h1>
+<div id="container">
 
-<p><?php echo $page->text()->kirbytext() ?></p>
+<div class="inner">
+
+<?php if($page->text()->isNotEmpty()): ?>
+<section>
+	<?= $page->text()->kt() ?>
+</section>
+<?php endif ?>
+
+</div>
+	
+</div>
 
 <?php snippet('footer') ?>

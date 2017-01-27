@@ -68,4 +68,37 @@
 </head>
 <body>
 
+<?php
+if ($page->isHomepage()):
+
+	$galleryPage = $pages->find('work');
+    $galleryChilds = $galleryPage->children()->visible();
+    $galleryImages = new Collection();
+    foreach ($galleryChilds as $c) {
+        foreach ($c->medias()->toStructure() as $i) {
+            $galleryImages->data[] = resizeOnDemand($i->toFile(),1000);
+        }
+    }
+    shuffle($galleryImages->data);
+    $galleryImages = $galleryImages->limit(1);
+
+    echo '<div id="intro"><img src="'.$galleryImages.'"></div>';
+
+endif
+
+?>
+
 <div class="loader"></div>
+
+<header>
+	<a href="<?= $site->url() ?>" data-target="index">
+	<?= $site->title()->html() ?>
+	</a>
+</header>
+
+<?php $about = $pages->find('about') ?>
+<div id="about-link">
+	<a href="<?= $about->url() ?>" data-title="<?= $about->title()->html() ?>" data-target="page">
+	<?= $about->title()->html() ?>
+	</a>
+</div>
