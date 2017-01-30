@@ -51,31 +51,32 @@ $(function() {
                     if (e.keyCode === 39 && $slider) app.goNext($slider);
                 });
                 $(window).load(function() {
-                  if ($('#intro').length > 0 && !isMobile) {
-                    $('#intro img').each(function() {
-                        var el = $(this);
-                        //var w = el.width();
-                        var h = el.height();
-                        var top = Math.floor(Math.random() * (height - 40 - h)) + 40;
-                        var left = Math.floor(Math.random() * (48)) + 10;
-                        el.css({
-                            top: top,
-                            left: left + "%",
-                            opacity: 1
+                    if ($('#intro').length > 0 && !isMobile) {
+                        $('#intro img').each(function() {
+                            var el = $(this);
+                            //var w = el.width();
+                            //var h = el.height();
+                            //var top = Math.floor(Math.random() * (height - 40 - h)) + 40;
+                            var left = Math.floor(Math.random() * (48)) + 10;
+                            el.css({
+                                //top: top,
+                                left: left + "%",
+                                opacity: 1
+                            });
                         });
-                    });
-                    $('#intro').click(function(event) {
-                        var el = $(this);
-                        el.find('img').fadeOut(200, function() {
-                            $body.addClass('loaded');
+                        $('#intro').click(function(event) {
+                            var el = $(this);
+                            el.find('img').css('opacity', 0);
                             setTimeout(function() {
-                                el.remove();
-                            }, 1000);
+                                $body.addClass('loaded');
+                                setTimeout(function() {
+                                    el.remove();
+                                }, 1000);
+                            }, 300);
                         });
-                    });
-                  } else {
-                    $body.addClass('loaded');
-                  }
+                    } else {
+                        $body.addClass('loaded');
+                    }
                 });
             });
         },
@@ -107,7 +108,7 @@ $(function() {
                 if (flkty) {
                     var slidecaption = $(flkty.selectedElement).attr('data-caption');
                     if (typeof slidecaption !== typeof undefined && slidecaption !== false) {
-                        $caption.html('<p>'+slidecaption+'</p>');
+                        $caption.html('<p>' + slidecaption + '</p>');
                     }
                 }
             });

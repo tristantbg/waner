@@ -24,7 +24,11 @@ endif
 
 		<div class="cell" data-caption="<?= $image->caption()->html() ?>">
 			<div class="content">
+				<?php if($key < 1): ?>
+				<img src="<?= resizeOnDemand($image, 1700) ?>" alt="<?= $title.' - © '.$site->title()->html() ?>" height="100%" width="auto" />
+				<?php else: ?>
 				<img class="lazy" src="<?= resizeOnDemand($image, 100) ?>" data-flickity-lazyload="<?= resizeOnDemand($image, 1700, true) ?>" alt="<?= $title.' - © '.$site->title()->html() ?>" height="100%" width="auto" />
+				<?php endif ?>
 				<noscript>
 					<img src="<?= resizeOnDemand($image, 1700, true) ?>" alt="<?= $title.' - © '.$site->title()->html() ?>" height="100%" width="auto" />
 				</noscript>
@@ -36,6 +40,23 @@ endif
 	</div>
 
 	<div id="slide-caption"></div>
+
+	<div id="next-project">
+		<?php if($page->hasNextVisible()): ?>
+		<?php $next = $page->nextVisible() ?>
+		<?php else: ?>
+		<?php $next = $page->parent()->children()->visible()->first() ?>
+		<?php endif ?>
+		<?php
+		$ntitle = $next->title()->html(); 
+		if($next->subtitle()->isNotEmpty()):
+			$ntitle .= ' '.$next->subtitle()->html();
+		endif
+		?>
+		<a href="<?= $next->url() ?>" data-title="<?= $ntitle ?>" data-target="project">
+		Next project
+		</a>	
+	</div>
 
 </div>
 	
