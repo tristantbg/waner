@@ -2,7 +2,7 @@
 var width = $(window).width(),
     height = $(window).height(),
     isMobile = false,
-    $root = '/erwansene';
+    $root = '/';
 $(function() {
     var app = {
         init: function() {

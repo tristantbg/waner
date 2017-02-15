@@ -1,7 +1,7 @@
 <?php snippet('header') ?>
 
 <?php $images = $page->medias()->toStructure() ?>
-<?php 
+<?php
 
 $title = $page->title()->html(); 
 if($page->subtitle()->isNotEmpty()):
@@ -24,13 +24,13 @@ endif
 
 		<div class="cell" data-caption="<?= $image->caption()->html() ?>">
 			<div class="content">
-				<?php if($key < 1): ?>
-				<img src="<?= resizeOnDemand($image, 1700) ?>" alt="<?= $title.' - © '.$site->title()->html() ?>" height="100%" width="auto" />
+				<?php if($key < 2 OR $key == $images->count() - 1): ?>
+				<img src="<?= resizeOnDemand($image, 1300, true) ?>" alt="<?= $title.' - © '.$site->title()->html() ?>" height="100%" width="auto" />
 				<?php else: ?>
-				<img class="lazy" src="<?= resizeOnDemand($image, 100) ?>" data-flickity-lazyload="<?= resizeOnDemand($image, 1700, true) ?>" alt="<?= $title.' - © '.$site->title()->html() ?>" height="100%" width="auto" />
+				<img class="lazy" src="<?= resizeOnDemand($image, 100) ?>" data-flickity-lazyload="<?= resizeOnDemand($image, 1300, true) ?>" alt="<?= $title.' - © '.$site->title()->html() ?>" height="100%" width="auto" />
 				<?php endif ?>
 				<noscript>
-					<img src="<?= resizeOnDemand($image, 1700, true) ?>" alt="<?= $title.' - © '.$site->title()->html() ?>" height="100%" width="auto" />
+					<img src="<?= resizeOnDemand($image, 1300) ?>" alt="<?= $title.' - © '.$site->title()->html() ?>" height="100%" width="auto" />
 				</noscript>
 			</div>
 		</div>

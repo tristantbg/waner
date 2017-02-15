@@ -37,7 +37,7 @@
 
 <section id="credits">
 	<p>
-	© <?= date('Y') ?>, All rights reserved by <?= $site->title()->html() ?>
+	© <?= date('Y') ?>, <?= $site->title()->html() ?>. All rights reserved.
 	<br>Design & development by <a href="http://www.tristanbagot.com" target="_blank">Tristan Bagot</a>
 	</p>
 </section>

@@ -30,20 +30,20 @@ of the system, please check out http://getkirby.com/docs/advanced/options
 */
 
 c::set('home', 'work');
-c::set('debug', true);
+c::set('debug', false);
 c::set('oembed.lazyvideo', true);
 c::set('sitemap.exclude', array('error'));
 c::set('sitemap.important', array('contact'));
 c::set('thumb.quality', 100);
 //c::set('thumbs.driver', 'im');
 c::set('routes', array(
-	// array(
-	// 	'pattern' => 'info/(:any)',
-	// 	'action'  => function($uri,$uid) {
-	// 		$page = site()->homePage();
-	// 		go($page);
-	// 	}
-	// 	),
+	array(
+		'pattern' => 'about/(:all)',
+		'action'  => function() {
+			$page = site()->homePage();
+			go($page);
+		}
+		),
 	array(
 		'pattern' => 'robots.txt',
 		'action' => function () {
