@@ -4,6 +4,7 @@ title: Section
 files: false
 pages: false
 fields:
+  prevnext: prevnext
   title:
     label: Title
     type:  text
