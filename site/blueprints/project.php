@@ -30,6 +30,7 @@ fields:
   text:
     label: Description
     type: textarea
+    help: for SEO only
   medias: 
     label: Images
     type: gallery
