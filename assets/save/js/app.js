@@ -21,7 +21,6 @@ $(function() {
                     app.loadContent(State.url, $container);
                 });
                 app.loadSlider();
-                window.viewportUnitsBuggyfill.init();
                 $('body').on('click', '[data-target]', function(e) {
                     $el = $(this);
                     target = $el.data('target');
@@ -42,7 +41,13 @@ $(function() {
                 //esc
                 $(document).keyup(function(e) {
                     if (e.keyCode === 27) app.goIndex();
+                });
+                //left
+                $(document).keyup(function(e) {
                     if (e.keyCode === 37 && $slider) app.goPrev($slider);
+                });
+                //right
+                $(document).keyup(function(e) {
                     if (e.keyCode === 39 && $slider) app.goNext($slider);
                 });
                 $(window).load(function() {
