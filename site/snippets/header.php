@@ -46,8 +46,9 @@
 			<meta property="og:image" content="<?= $site->ogimage()->toFile()->width(1200)->url() ?>"/>
 		<?php endif ?>
 	<?php endif ?>
-
 	<meta itemprop="description" content="<?= $site->description()->html() ?>">
+	<link rel="shortcut icon" href="">
+	<link rel="icon" href="" type="image/x-icon">
 
 	<?php 
 	echo css('assets/css/build/build.min.css');

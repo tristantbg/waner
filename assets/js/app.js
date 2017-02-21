@@ -88,7 +88,7 @@ $(function() {
         loadSlider: function() {
             $slider = $('#slider').flickity({
                 cellSelector: '.cell',
-                imagesLoaded: true,
+                imagesLoaded: false,
                 lazyLoad: 2,
                 setGallerySize: false,
                 accessibility: false,
@@ -97,6 +97,9 @@ $(function() {
                 pageDots: false,
                 draggable: true
             });
+            setTimeout(function(){
+              $slider.flickity('resize');
+            }, 300);
             flkty = $slider.data('flickity');
             $caption = $('#slide-caption');
             $slider.on('select.flickity', function() {
