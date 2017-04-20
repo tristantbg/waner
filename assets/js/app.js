@@ -141,7 +141,7 @@ $(function() {
         loadContent: function(url, target) {
             $body.addClass('loading');
             setTimeout(function() {
-                $body.scrollTop(0);
+                $(window).scrollTop(0);
                 $(target).load(url + ' #container .inner', function(response) {
                     setTimeout(function() {
                         if ($('#container .inner').hasClass('project')) {
